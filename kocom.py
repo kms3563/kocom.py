@@ -21,7 +21,7 @@ import paho.mqtt.client as mqtt
 import logging
 import configparser
 
-
+# MSKIM
 # define -------------------------------
 SW_VERSION = '2022.04.10'
 CONFIG_FILE = 'kocom.conf'
