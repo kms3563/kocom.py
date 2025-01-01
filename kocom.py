@@ -23,9 +23,9 @@ import paho.mqtt.client as mqtt
 import logging
 import configparser
 
-# MSKIM
+# 2025.01.01
 # define -------------------------------
-SW_VERSION = '2024.02.23'
+SW_VERSION = '2025.01.01'
 CONFIG_FILE = 'kocom.conf'
 BUF_SIZE = 100
 
