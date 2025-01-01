@@ -735,22 +735,33 @@ def poll_state(enforce=False):
             logging.error('[THREAD] {} is not active. starting.'.format( thread_instance.name))
             thread_instance.start()
 
-    for t in dev_list:
-        dev = t.split('_')
-        if dev[0] in no_polling_list:
-            continue
+    query('36' + '00', publish=True, enforce=enforce)['flag']
+    time.sleep(1)
+    query('36' + '01', publish=True, enforce=enforce)['flag']
+    time.sleep(1)
+    query('36' + '02', publish=True, enforce=enforce)['flag']
+    time.sleep(1)
+    query('36' + '03', publish=True, enforce=enforce)['flag']
+    time.sleep(1)
+    query('36' + '04', publish=True, enforce=enforce)['flag']
+    time.sleep(1)
 
-        dev_id = device_h_dic.get(dev[0])
-        if len(dev) > 1:
-            sub_id = room_h_dic.get(dev[1])
-        else:
-            sub_id = '00'
-
-        if dev_id != None and sub_id != None:
-            if query(dev_id + sub_id, publish=True, enforce=enforce)['flag'] == False:
-                break
-            time.sleep(1)
-
+#    for t in dev_list:
+#        dev = t.split('_')
+#        if dev[0] in no_polling_list:
+#            continue
+#
+#        dev_id = device_h_dic.get(dev[0])
+#        if len(dev) > 1:
+#            sub_id = room_h_dic.get(dev[1])
+#        else:
+#            sub_id = '00'
+#
+#        if dev_id != None and sub_id != None:
+#            if query(dev_id + sub_id, publish=True, enforce=enforce)['flag'] == False:
+#                break
+#            time.sleep(1)
+#
     poll_timer.cancel()
     poll_timer = threading.Timer(polling_interval, poll_state)
     poll_timer.start()
